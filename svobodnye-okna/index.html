@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Свободные окна — Планета здоровой кожи</title>
+<meta name="theme-color" content="#017B8C">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Свободные окна">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAADo0lEQVR4nO3dO3IbMRRFQVBbdiiHDuUtW07EKplFmvPBcID7uleAz8EblhJdLu8fnw1CvJ29AOhJ0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQL/Ln14+zl1CCoIki6Be4TmdT+niCJoqgD3Y7lU3pYwmaKIImiqAP9OjnhZ8dxxE0UQR9EFP4HII+ieCPIWiiCPoAS6evKd2foIki6M5M3XMJ+mQeQF+CJoqgOzJtzyfoAXgI/QiaKILuZO+UNaX7EDRRBN2B6ToOQQ/Ew9hP0EQR9E6m6lgEPRgPZB9B7yC+8Qh6QB7KdoImiqA3MkXHJOhBeTDbCHoDsY1L0EQR9MB8CdYT9EoiG5ugB+cBrSPoFcQ1PkETRdAT8GVYTtALiWoOgp6EB7WMoBcQ0zwETRRBT8SX4jlBPyGiuQiaKIL+jxGn84hrGomgiSLoCZnSjwn6AdHMSdBEEfSkfEHuE/QdYpmXoIki6BszTeeZ1voqgiaKoCdnSv9L0N+IY36CJoqgv8w8nWdee2+CJoqgiSLolvHJTthDD4ImSvmgkyZb0l62Kh80WUoHnTjREve0Rtmgky8+eW/PlAy6woVX2OM95YKudNGV9npVKuiKF1xtz6WCJl+ZoKtNqu8q7b1M0NRQIuhKE+qRKmdQImjqiA+6ymRaosJZxAdNLdFBV5hIa6WfSXTQ1CNoosQGnf5p3SP5bGKDpiZBE0XQRIkMOvk3Yi+pZxQZNHUJmiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkSGfTbz99nL2F4qWcUGTR1CZoogiZKbNCpvxF7SD6b2KCpSdBEiQ46+dO6VfqZRAdNPfFBp0+kNSqcRXzQ1FIi6AqT6ZkqZ1AiaOooE3SVCXVPpb2XCZoaSgVdaVJdVdtzqaBbq3XBlfZ6VS7o1mpcdIU93lMy6NayLzx5b8+UDbq1zItP3NMapYNuLSuApL1sVT7o1jJCSNhDD4L+MnMQM6+9N0F/M2MYM675SIK+MVMgM631VS6X94/PsxcxqlH/U5SQHxP0AqOELeTnBL3CWWELeTlBb/CqsIW8nqB36h23iPcRdGdrAxdwX4Imir9DE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRR/gI8LNXLWD2QqQAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAADo0lEQVR4nO3dO3IbMRRFQVBbdiiHDuUtW07EKplFmvPBcID7uleAz8EblhJdLu8fnw1CvJ29AOhJ0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQL/Ln14+zl1CCoIki6Be4TmdT+niCJoqgD3Y7lU3pYwmaKIImiqAP9OjnhZ8dxxE0UQR9EFP4HII+ieCPIWiiCPoAS6evKd2foIki6M5M3XMJ+mQeQF+CJoqgOzJtzyfoAXgI/QiaKILuZO+UNaX7EDRRBN2B6ToOQQ/Ew9hP0EQR9E6m6lgEPRgPZB9B7yC+8Qh6QB7KdoImiqA3MkXHJOhBeTDbCHoDsY1L0EQR9MB8CdYT9EoiG5ugB+cBrSPoFcQ1PkETRdAT8GVYTtALiWoOgp6EB7WMoBcQ0zwETRRBT8SX4jlBPyGiuQiaKIL+jxGn84hrGomgiSLoCZnSjwn6AdHMSdBEEfSkfEHuE/QdYpmXoIki6BszTeeZ1voqgiaKoCdnSv9L0N+IY36CJoqgv8w8nWdee2+CJoqgiSLolvHJTthDD4ImSvmgkyZb0l62Kh80WUoHnTjREve0Rtmgky8+eW/PlAy6woVX2OM95YKudNGV9npVKuiKF1xtz6WCJl+ZoKtNqu8q7b1M0NRQIuhKE+qRKmdQImjqiA+6ymRaosJZxAdNLdFBV5hIa6WfSXTQ1CNoosQGnf5p3SP5bGKDpiZBE0XQRIkMOvk3Yi+pZxQZNHUJmiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkSGfTbz99nL2F4qWcUGTR1CZoogiZKbNCpvxF7SD6b2KCpSdBEiQ46+dO6VfqZRAdNPfFBp0+kNSqcRXzQ1FIi6AqT6ZkqZ1AiaOooE3SVCXVPpb2XCZoaSgVdaVJdVdtzqaBbq3XBlfZ6VS7o1mpcdIU93lMy6NayLzx5b8+UDbq1zItP3NMapYNuLSuApL1sVT7o1jJCSNhDD4L+MnMQM6+9N0F/M2MYM675SIK+MVMgM631VS6X94/PsxcxqlH/U5SQHxP0AqOELeTnBL3CWWELeTlBb/CqsIW8nqB36h23iPcRdGdrAxdwX4Imir9DE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRR/gI8LNXLWD2QqQAAAABJRU5ErkJggg==">
+<style>
+@font-face{font-family:'PrataLocal';src:url('../assets/prata.woff2') format('woff2');font-display:block}
+:root{--teal:#017B8C;--aqua:#44C8D2;--peach:#E5C1AC;--ink:#0f3b42;--muted:#6d8b91;--line:#dfe9eb;--bg:#f4f8f9}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:30px 18px calc(50px + env(safe-area-inset-bottom))}
+h1{font-family:'PrataLocal',Georgia,serif;font-weight:400;color:var(--teal);font-size:27px;margin:0 0 5px}
+header p{margin:0 0 24px;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:24px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);margin:0 0 6px}
+select,input[type=date],input[type=text]{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;
+  font-family:inherit;font-size:16px;color:var(--ink);background:#fff;outline:none;-webkit-appearance:none}
+select:focus,input:focus{border-color:var(--aqua);box-shadow:0 0 0 3px rgba(68,200,210,.16)}
+.field{margin-bottom:16px}
+.times{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tw{position:relative}
+.tw b{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:24px;height:24px;border:0;
+  border-radius:6px;background:#eef4f5;color:var(--muted);font:400 16px/24px sans-serif;text-align:center;cursor:pointer}
+.tw b:hover{background:#dceef0;color:var(--teal)}
+.mini{margin-top:10px;padding:10px 14px;border:1px dashed var(--line);border-radius:10px;background:#fff;
+  color:var(--teal);font:inherit;font-size:14px;cursor:pointer;width:100%}
+.mini:hover{border-color:var(--aqua)}
+.btns{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btns button{flex:1 1 130px;padding:14px;border-radius:11px;font:inherit;font-size:16px;cursor:pointer}
+.go{border:0;background:var(--teal);color:#fff}
+.ghost{border:1px solid var(--teal);background:#fff;color:var(--teal)}
+button:disabled{opacity:.5}
+.status{margin-top:14px;font-size:14px;color:var(--muted);min-height:20px}
+.status.err{color:#c0392b}.status.ok{color:var(--teal)}
+.stage{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+canvas{width:100%;max-width:360px;height:auto;border-radius:10px;box-shadow:0 2px 18px rgba(15,59,66,.12)}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0}
+
+.nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+.nav-in{max-width:1180px;margin:0 auto;padding:9px 18px;display:flex;align-items:center;
+  gap:12px;flex-wrap:wrap;min-height:56px}
+.nav-home{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;text-decoration:none;
+  font-family:'PrataLocal',Georgia,serif;font-size:16px;color:var(--teal)}
+.nav-home i{font-style:normal;color:var(--muted)}
+.nav-links{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{padding:8px 14px;border-radius:999px;font-size:14px;color:var(--muted);
+  text-decoration:none;border:1px solid transparent;transition:.15s}
+.nav-links a:hover{color:var(--teal);border-color:var(--line)}
+.nav-links a.on{background:var(--teal);border-color:var(--teal);color:#fff}
+@media(max-width:560px){.nav-in{padding:9px 14px}.nav-links{width:100%;margin-left:0}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-home" href="../index.html"><i aria-hidden="true">←</i>Служебные сервисы</a>
+    <div class="nav-links">
+      <a href="../sertifikaty/index.html">Сертификаты</a>
+      <a class="on" href="index.html">Свободные окна</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <header>
+    <h1>Свободные окна</h1>
+    <p>Планета здоровой кожи · выберите врача, дату и время — получите готовую сторис 1080×1920</p>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <div class="field">
+        <label for="doc">Врач</label>
+        <select id="doc"></select>
+      </div>
+      <div class="field">
+        <label for="date">Дата</label>
+        <input type="date" id="date">
+      </div>
+      <div class="field">
+        <label>Время (до четырёх)</label>
+        <div class="times" id="times"></div>
+        <button class="mini" id="add">+ добавить время</button>
+      </div>
+      <div class="btns">
+        <button class="go" id="png">Скачать PNG</button>
+        <button class="ghost" id="jpg">Скачать JPEG</button>
+      </div>
+      <div class="btns" style="margin-top:10px">
+        <button class="ghost" id="share" style="display:none">Отправить / сохранить</button>
+      </div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="stage">
+      <canvas id="cv" width="1080" height="1920"></canvas>
+      <p class="hint" id="fit"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   Врачи и геометрия макетов. Координаты — в пикселях холста 1080×1920.
+   Чтобы добавить врача: положите фон в assets/, скопируйте любой блок ниже
+   и поправьте числа.
+   ========================================================================== */
+const TEAL='#017B8C', PEACH_LINE='#F9C3A1';
+
+const DOCTORS=[
+{
+  id:'volkova', name:'Волкова Татьяна Олеговна',
+  bg:'assets/volkova.jpg',
+  cut:{src:'assets/volkova-cut.png', x:340, y:840},
+  x0:49, top:887, minTop:855, maxBottom:1470,
+  panel:{right:660, radius:30, fill:'#FEE8DB', stroke:PEACH_LINE, lw:2.5},
+  // A — от верха подложки до верха цифр даты; B — до разделителя; C — до центра первой строки;
+  // P — шаг строк; D — от центра последней строки до низа подложки
+  seg:{A:79, B:113, C:126.5, P:97, D:145.5},
+  date:{x:95, size:66, color:TEAL, maxRight:445},
+  divider:{h:3, x1:93, x2:383, color:TEAL},
+  rows:{cx:130.5, discR:0, clockR:35.5, lw:3, clockColor:TEAL, hands:'3',
+        textX:211, textOff:-34.5, size:70, color:TEAL}
+},
+{
+  id:'zangieva', name:'Зангиева Дзерасса Алибековна',
+  bg:'assets/zangieva.jpg',
+  cut:{src:'assets/zangieva-cut.png', x:360, y:780},
+  x0:66, top:802, minTop:730, maxBottom:1240,
+  panel:{right:620, radius:40, fill:'#FFFFFF', stroke:PEACH_LINE, lw:2.5},
+  seg:{A:56, B:113, C:62.5, P:81, D:96.5},
+  date:{x:114, size:65, color:TEAL, maxRight:520},
+  divider:{h:3, x1:114, x2:392, color:PEACH_LINE, dotR:7.5, dotCx:399},
+  rows:{cx:146.5, discR:0, clockR:30.5, lw:3, clockColor:PEACH_LINE, hands:'430',
+        textX:202, textOff:-23.5, size:52, color:TEAL}
+},
+{
+  id:'leonenko', name:'Леоненко Екатерина Витальевна',
+  bg:'assets/leonenko.jpg',
+  cut:{src:'assets/leonenko-cut.png', x:380, y:820},
+  x0:68, top:843, minTop:770, maxBottom:1425,
+  panel:null,
+  seg:{A:20, B:186, C:0, P:113, D:41.5},
+  date:{x:129, size:70, color:TEAL, maxRight:410,
+        pill:{x0:68, dTop:-20, h:101, padRight:44, fill:'#FBDFD0'}},
+  divider:null,
+  rows:{cx:110, discR:41.5, discFill:'#FBDFD0', clockR:26, lw:3, clockColor:TEAL, hands:'430',
+        textX:170, textOff:-32, size:71, color:TEAL}
+},
+{
+  id:'dashicheva', name:'Дашичева Мария Михайловна',
+  bg:'assets/dashicheva.jpg',
+  cut:null,
+  x0:85, top:702, minTop:680, maxBottom:1235,
+  panel:null,
+  seg:{A:11, B:178.5, C:0, P:97, D:42},
+  date:{x:213, size:93, color:TEAL, maxRight:610,
+        badge:{cx:138, dCy:43.5, r:53.5, fill:'#FBDBC6', iw:60, ih:61, lw:3.4, color:TEAL}},
+  divider:null,
+  rows:{cx:127, discR:42, discFill:'#FBDBC6', clockR:25, lw:3, clockColor:TEAL, hands:'430',
+        textX:191, textOff:-31.5, size:73, color:TEAL}
+}];
+
+// насколько сильно можно ужать каждый промежуток, прежде чем уменьшать кегль
+const MINF={A:.55, B:.85, C:.55, P:.95, D:.35};
+
+const MONTHS=['января','февраля','марта','апреля','мая','июня',
+              'июля','августа','сентября','октября','ноября','декабря'];
+
+/* ====================== состояние и элементы ============================= */
+const $=id=>document.getElementById(id);
+const cv=$('cv'), ctx=cv.getContext('2d');
+const say=(m,c)=>{$('status').textContent=m; $('status').className='status '+(c||'');};
+const cache={};
+let times=['14:00','15:00'];
+
+DOCTORS.forEach((d,i)=>{const o=document.createElement('option');o.value=i;o.textContent=d.name;$('doc').appendChild(o);});
+const today=new Date(); today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
+$('date').value=today.toISOString().slice(0,10);
+
+function drawTimes(){
+  const box=$('times'); box.innerHTML='';
+  times.forEach((t,i)=>{
+    const w=document.createElement('div'); w.className='tw';
+    const inp=document.createElement('input');
+    inp.type='text'; inp.value=t; inp.inputMode='numeric'; inp.placeholder='14:00';
+    inp.addEventListener('input',()=>{times[i]=inp.value;render();});
+    w.appendChild(inp);
+    if(times.length>1){
+      const b=document.createElement('b'); b.textContent='×'; b.title='убрать';
+      b.addEventListener('click',()=>{times.splice(i,1);drawTimes();render();});
+      w.appendChild(b);
+    }
+    box.appendChild(w);
+  });
+  $('add').style.display = times.length>=4 ? 'none' : '';
+}
+$('add').addEventListener('click',()=>{times.push('');drawTimes();render();});
+$('doc').addEventListener('change',render);
+$('date').addEventListener('change',render);
+drawTimes();
+
+/* ====================== вспомогательное рисование ======================== */
+function load(src){
+  if(cache[src]) return cache[src];
+  cache[src]=new Promise((res,rej)=>{
+    const i=new Image(); i.onload=()=>res(i); i.onerror=()=>rej(new Error('не открылся '+src)); i.src=src;
+  });
+  return cache[src];
+}
+function roundRect(c,x,y,w,h,r){
+  r=Math.min(r,w/2,h/2);
+  c.beginPath();
+  c.moveTo(x+r,y); c.lineTo(x+w-r,y); c.quadraticCurveTo(x+w,y,x+w,y+r);
+  c.lineTo(x+w,y+h-r); c.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  c.lineTo(x+r,y+h); c.quadraticCurveTo(x,y+h,x,y+h-r);
+  c.lineTo(x,y+r); c.quadraticCurveTo(x,y,x+r,y); c.closePath();
+}
+function metrics(text,size){
+  ctx.font=size+'px PrataLocal';
+  const m=ctx.measureText(text);
+  return {w:m.actualBoundingBoxLeft+m.actualBoundingBoxRight, left:m.actualBoundingBoxLeft, asc:m.actualBoundingBoxAscent};
+}
+/* рисуем строку так, чтобы левый край чернил был в x, верх — в inkTop */
+function inkText(text,x,inkTop,size,color){
+  ctx.font=size+'px PrataLocal'; ctx.fillStyle=color; ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+  const m=metrics(text,size);
+  ctx.fillText(text, x+m.left, inkTop+m.asc);
+  return x+m.w;
+}
+function clock(cx,cy,r,lw,color,hands){
+  ctx.strokeStyle=color; ctx.lineWidth=lw; ctx.lineCap='butt'; ctx.lineJoin='miter';
+  ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx,cy-r*0.70); ctx.stroke();   // минутная — вверх
+  ctx.beginPath(); ctx.moveTo(cx,cy);
+  if(hands==='3') ctx.lineTo(cx+r*0.46,cy);                                      // часовая — вправо
+  else            ctx.lineTo(cx+r*0.44,cy+r*0.46);                               // часовая — вниз-вправо
+  ctx.stroke();
+}
+function calendar(cx,cy,w,h,lw,color){
+  const x=cx-w/2, y=cy-h/2, bodyY=y+h*0.18, bodyH=h-h*0.18;
+  ctx.strokeStyle=color; ctx.lineWidth=lw; ctx.lineJoin='round'; ctx.lineCap='round';
+  roundRect(ctx,x,bodyY,w,bodyH,w*0.16); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x,bodyY+bodyH*0.27); ctx.lineTo(x+w,bodyY+bodyH*0.27); ctx.stroke();
+  [0.29,0.71].forEach(k=>{ctx.beginPath();ctx.moveTo(x+w*k,y);ctx.lineTo(x+w*k,bodyY+bodyH*0.13);ctx.stroke();});
+}
+
+/* ============================== рендер =================================== */
+async function render(){
+  const d=DOCTORS[+$('doc').value];
+  const bg=await load(d.bg);
+  const cut=d.cut? await load(d.cut.src) : null;
+
+  const list=times.map(t=>t.trim()).filter(Boolean);
+  if(!list.length) list.push('—');
+  const n=list.length;
+  const dv=$('date').value ? new Date($('date').value+'T12:00:00') : new Date();
+  const dateStr=dv.getDate()+' '+MONTHS[dv.getMonth()];
+
+  /* --- вписываем блок по высоте: сперва поджимаем промежутки, потом кегль --- */
+  const g=d.seg;
+  const f={A:1,B:1,C:1,P:1,D:1};
+  const sum=()=>g.A*f.A+g.B*f.B+g.C*f.C+(n-1)*g.P*f.P+g.D*f.D;
+  let total=sum();
+  /* если не хватает места снизу — сперва поднимаем блок, потом поджимаем промежутки */
+  const top = d.top - Math.max(0, Math.min(d.top-(d.minTop||d.top), total-(d.maxBottom-d.top)));
+  const need = d.maxBottom - top;
+  if(total>need){                       // подбираем общий коэффициент поджатия промежутков
+    let lo=0.2, hi=1;
+    for(let i=0;i<40;i++){
+      const k=(lo+hi)/2;
+      for(const key in f) f[key]=Math.max(k,MINF[key]);
+      if(sum()>need) hi=k; else lo=k;
+    }
+    for(const key in f) f[key]=Math.max(lo,MINF[key]);
+    total=sum();
+  }
+  const s = total>need ? need/total : 1;
+  const SX=x=>d.x0+(x-d.x0)*s;
+
+  const dateTop = top + g.A*f.A*s;
+  const divY    = dateTop + g.B*f.B*s;
+  const row1Cy  = divY + g.C*f.C*s;
+  const cyOf    = i => row1Cy + i*g.P*f.P*s;
+  const bottom  = cyOf(n-1) + g.D*f.D*s;
+
+  ctx.clearRect(0,0,1080,1920);
+  ctx.drawImage(bg,0,0,1080,1920);
+
+  if(d.panel){
+    roundRect(ctx,SX(d.x0),top,SX(d.panel.right)-SX(d.x0),bottom-top,d.panel.radius*s);
+    ctx.fillStyle=d.panel.fill; ctx.fill();
+    ctx.strokeStyle=d.panel.stroke; ctx.lineWidth=d.panel.lw*s; ctx.stroke();
+  }
+
+  /* дата: при длинном месяце кегль уменьшается, чтобы не заехать на врача */
+  const D=d.date;
+  let size=D.size*s;
+  const maxW=SX(D.maxRight)-SX(D.x);
+  let mm=metrics(dateStr,size), shrunk=false;
+  if(mm.w>maxW){ size=size*maxW/mm.w; mm=metrics(dateStr,size); shrunk=true; }
+
+  if(D.pill){
+    const p=D.pill, x=SX(p.x0), right=SX(D.x)+mm.w+p.padRight*s;
+    roundRect(ctx,x,dateTop+p.dTop*s,right-x,p.h*s,p.h*s/2);
+    ctx.fillStyle=p.fill; ctx.fill();
+  }
+  if(D.badge){
+    const b=D.badge, cy=dateTop+b.dCy*s;
+    ctx.beginPath(); ctx.arc(SX(b.cx),cy,b.r*s,0,Math.PI*2); ctx.fillStyle=b.fill; ctx.fill();
+    calendar(SX(b.cx),cy,b.iw*s,b.ih*s,b.lw*s,b.color);
+  }
+  inkText(dateStr,SX(D.x),dateTop,size,D.color);
+
+  if(d.divider){
+    const v=d.divider;
+    ctx.fillStyle=v.color;
+    ctx.fillRect(SX(v.x1),divY,SX(v.x2)-SX(v.x1),v.h*s);
+    if(v.dotR){ ctx.beginPath(); ctx.arc(SX(v.dotCx),divY+v.h*s/2,v.dotR*s,0,Math.PI*2); ctx.fill(); }
+  }
+
+  const R=d.rows;
+  list.forEach((t,i)=>{
+    const cy=cyOf(i), cx=SX(R.cx);
+    if(R.discR){ ctx.beginPath(); ctx.arc(cx,cy,R.discR*s,0,Math.PI*2); ctx.fillStyle=R.discFill; ctx.fill(); }
+    clock(cx,cy,R.clockR*s,R.lw*s,R.clockColor,R.hands);
+    inkText(t,SX(R.textX),cy+R.textOff*s,R.size*s,R.color);
+  });
+
+  if(cut) ctx.drawImage(cut,d.cut.x,d.cut.y);
+
+  const notes=[];
+  if(top<d.top-0.5) notes.push('блок поднят на '+Math.round(d.top-top)+' px');
+  if(f.P<0.999||f.A<0.999) notes.push('промежутки поджаты');
+  if(s<0.995) notes.push('кегль '+Math.round(s*100)+'%');
+  if(shrunk) notes.push('дата уменьшена, чтобы не заехать на врача');
+  $('fit').textContent = notes.length? 'Подгонка: '+notes.join(', ')+'.' : 'Макет как в исходнике.';
+}
+
+/* ============================== экспорт ================================== */
+function fname(ext){
+  const d=DOCTORS[+$('doc').value], dv=new Date($('date').value+'T12:00:00');
+  const p=n=>String(n).padStart(2,'0');
+  return 'Окна_'+d.name.split(' ')[0]+'_'+p(dv.getDate())+'-'+p(dv.getMonth()+1)+'.'+ext;
+}
+function blob(type,q){ return new Promise(r=>cv.toBlob(r,type,q)); }
+async function save(type,ext,q){
+  try{
+    await render();
+    const b=await blob(type,q), url=URL.createObjectURL(b), a=document.createElement('a');
+    a.href=url; a.download=fname(ext); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+    say('Готово: '+fname(ext),'ok');
+  }catch(e){ say('Ошибка: '+e.message,'err'); }
+}
+$('png').addEventListener('click',()=>save('image/png','png'));
+$('jpg').addEventListener('click',()=>save('image/jpeg','jpg',0.92));
+
+if(navigator.canShare&&navigator.share){
+  $('share').style.display='';
+  $('share').addEventListener('click',async()=>{
+    try{
+      await render();
+      const b=await blob('image/jpeg',0.92);
+      const f=new File([b],fname('jpg'),{type:'image/jpeg'});
+      if(navigator.canShare({files:[f]})){ await navigator.share({files:[f]}); say('Отправлено','ok'); }
+    }catch(e){ if(e.name!=='AbortError') say('Ошибка: '+e.message,'err'); }
+  });
+}
+
+document.fonts.load('100px PrataLocal').then(()=>document.fonts.ready).then(render)
+  .catch(e=>say('Не загрузился шрифт: '+e.message,'err'));
+</script>
+</body>
+</html>
