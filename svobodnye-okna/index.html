@@ -188,13 +188,63 @@ DOCTORS.forEach((d,i)=>{const o=document.createElement('option');o.value=i;o.tex
 const today=new Date(); today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
 $('date').value=today.toISOString().slice(0,10);
 
+/* --- маска ЧЧ:ММ: с телефона видна цифровая клавиатура, двоеточие ставится само --- */
+function splitTime(val){                                  /* часы, минуты и было ли двоеточие */
+  const i=val.indexOf(':');
+  let h=(i<0?val:val.slice(0,i)).replace(/\D/g,'');
+  let m=(i<0?'':val.slice(i+1)).replace(/\D/g,'');
+  if(h.length>2){ m=h.slice(2)+m; h=h.slice(0,2); }       /* лишнее из часов уезжает в минуты */
+  return [h,m.slice(0,2),i>=0];
+}
+function maskTime(val,del){
+  let [h,m,sep]=splitTime(val);
+  if(!h && !m) return '';
+  if(!sep){
+    if(!del && h.length===1 && +h>2) h='0'+h;             /* 9 → 09 */
+    if(h.length<2) return h;
+    if(!m) return del ? h.slice(0,1) : h+':';             /* стёрли двоеточие — уносим и цифру */
+  }
+  return h+':'+m;
+}
+function fixTime(val){                                    /* дописываем до ЧЧ:ММ при потере фокуса */
+  const [h,m]=splitTime(val);
+  if(!h && !m) return '';
+  const hh=Math.min(+h||0,23);
+  const mm=Math.min(m.length===1 ? +m*10 : +m||0,59);     /* 14:3 → 14:30 */
+  return ('0'+hh).slice(-2)+':'+('0'+mm).slice(-2);
+}
+function bindTime(inp,commit){
+  let prev=inp.value;
+  inp.addEventListener('input',e=>{
+    const raw=inp.value;
+    const kind=(e&&e.inputType)||'';                        /* если браузер не говорит тип правки — смотрим на длину */
+    const del=kind ? /delete/i.test(kind) : raw.length<prev.length;
+    const caret=inp.selectionStart==null?raw.length:inp.selectionStart;
+    const out=maskTime(raw,del);
+    if(out!==raw){
+      let before=0; for(let k=0;k<caret;k++) if(raw[k]>='0'&&raw[k]<='9') before++;
+      inp.value=out;
+      let pos=out.length;
+      if(caret<raw.length){                                      /* правка внутри строки — держим каретку у той же цифры */
+        pos=0; let seen=0;
+        while(pos<out.length && seen<before){ if(out[pos]>='0'&&out[pos]<='9') seen++; pos++; }
+        if(out[pos]===':') pos++;
+      }
+      try{inp.setSelectionRange(pos,pos);}catch(_){}
+    }
+    prev=inp.value; commit(inp.value);
+  });
+  inp.addEventListener('blur',()=>{inp.value=fixTime(inp.value); prev=inp.value; commit(inp.value);});
+}
+
 function drawTimes(){
   const box=$('times'); box.innerHTML='';
   times.forEach((t,i)=>{
     const w=document.createElement('div'); w.className='tw';
     const inp=document.createElement('input');
     inp.type='text'; inp.value=t; inp.inputMode='numeric'; inp.placeholder='14:00';
-    inp.addEventListener('input',()=>{times[i]=inp.value;render();});
+    inp.maxLength=5; inp.autocomplete='off'; inp.enterKeyHint='done'; inp.setAttribute('aria-label','время '+(i+1));
+    bindTime(inp,v=>{times[i]=v;render();});
     w.appendChild(inp);
     if(times.length>1){
       const b=document.createElement('b'); b.textContent='×'; b.title='убрать';
