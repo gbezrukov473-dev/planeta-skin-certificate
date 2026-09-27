@@ -127,7 +127,7 @@ const DOCTORS=[
   // A — от верха подложки до верха цифр даты; B — до разделителя; C — до центра первой строки;
   // P — шаг строк; D — от центра последней строки до низа подложки
   seg:{A:79, B:113, C:126.5, P:97, D:145.5},
-  date:{x:95, size:66, color:TEAL, maxRight:445},
+  date:{x:95, size:66, color:TEAL, maxRight:437},
   divider:{h:3, x1:93, x2:383, color:TEAL},
   rows:{cx:130.5, discR:0, clockR:35.5, lw:3, clockColor:TEAL, hands:'3',
         textX:211, textOff:-34.5, size:70, color:TEAL}
@@ -139,7 +139,7 @@ const DOCTORS=[
   x0:66, top:802, minTop:730, maxBottom:1240,
   panel:{right:620, radius:40, fill:'#FFFFFF', stroke:PEACH_LINE, lw:2.5},
   seg:{A:56, B:113, C:62.5, P:81, D:96.5},
-  date:{x:114, size:65, color:TEAL, maxRight:520},
+  date:{x:114, size:65, color:TEAL, maxRight:458},
   divider:{h:3, x1:114, x2:392, color:PEACH_LINE, dotR:7.5, dotCx:399},
   rows:{cx:146.5, discR:0, clockR:30.5, lw:3, clockColor:PEACH_LINE, hands:'430',
         textX:202, textOff:-23.5, size:52, color:TEAL}
@@ -151,7 +151,7 @@ const DOCTORS=[
   x0:68, top:843, minTop:770, maxBottom:1425,
   panel:null,
   seg:{A:20, B:186, C:0, P:113, D:41.5},
-  date:{x:129, size:70, color:TEAL, maxRight:410,
+  date:{x:129, size:70, color:TEAL, maxRight:405,
         pill:{x0:68, dTop:-20, h:101, padRight:44, fill:'#FBDFD0'}},
   divider:null,
   rows:{cx:110, discR:41.5, discFill:'#FBDFD0', clockR:26, lw:3, clockColor:TEAL, hands:'430',
@@ -353,15 +353,17 @@ async function render(){
     ctx.strokeStyle=d.panel.stroke; ctx.lineWidth=d.panel.lw*s; ctx.stroke();
   }
 
-  /* дата: при длинном месяце кегль уменьшается, чтобы не заехать на врача */
-  const D=d.date;
-  let size=D.size*s;
-  const maxW=SX(D.maxRight)-SX(D.x);
-  let mm=metrics(dateStr,size), shrunk=false;
-  if(mm.w>maxW){ size=size*maxW/mm.w; mm=metrics(dateStr,size); shrunk=true; }
+  /* дата: при длинном месяце кегль уменьшается (в k раз), чтобы не заехать на врача.
+     Уменьшенная дата остаётся по центру своего места по высоте, а в плашке вместе
+     с кеглем ужимаются и отступы — иначе мелкий текст прилипает к верху и уезжает вправо */
+  const D=d.date, full=metrics(dateStr,D.size*s);
+  const inset = D.pill ? SX(D.x)-SX(D.pill.x0) : 0, base=SX(D.x)-inset;
+  const k=Math.min(1,(SX(D.maxRight)-base)/(inset+full.w)), shrunk=k<0.995;
+  const size=D.size*s*k, dateX=base+inset*k, dateInk=dateTop+full.asc*(1-k)/2;
+  const mm=metrics(dateStr,size);
 
   if(D.pill){
-    const p=D.pill, x=SX(p.x0), right=SX(D.x)+mm.w+p.padRight*s;
+    const p=D.pill, x=SX(p.x0), right=dateX+mm.w+p.padRight*s*k;
     roundRect(ctx,x,dateTop+p.dTop*s,right-x,p.h*s,p.h*s/2);
     ctx.fillStyle=p.fill; ctx.fill();
   }
@@ -370,7 +372,7 @@ async function render(){
     ctx.beginPath(); ctx.arc(SX(b.cx),cy,b.r*s,0,Math.PI*2); ctx.fillStyle=b.fill; ctx.fill();
     calendar(SX(b.cx),cy,b.iw*s,b.ih*s,b.lw*s,b.color);
   }
-  inkText(dateStr,SX(D.x),dateTop,size,D.color);
+  inkText(dateStr,dateX,dateInk,size,D.color);
 
   if(d.divider){
     const v=d.divider;
@@ -393,7 +395,7 @@ async function render(){
   if(top<d.top-0.5) notes.push('блок поднят на '+Math.round(d.top-top)+' px');
   if(f.P<0.999||f.A<0.999) notes.push('промежутки поджаты');
   if(s<0.995) notes.push('кегль '+Math.round(s*100)+'%');
-  if(shrunk) notes.push('дата уменьшена, чтобы не заехать на врача');
+  if(shrunk) notes.push('дата уменьшена до '+Math.round(k*100)+'%, чтобы не заехать на врача');
   $('fit').textContent = notes.length? 'Подгонка: '+notes.join(', ')+'.' : 'Макет как в исходнике.';
 }
 
